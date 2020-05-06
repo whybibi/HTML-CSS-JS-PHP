@@ -1,0 +1,411 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: why
+ * Date: 2017/11/13
+ * Time: 下午 02:14
+ */
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>网上超市一号店，省钱省力省时间</title>
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    a{
+        text-decoration: none;
+    }
+    .index_head_div{
+        width: 100%;
+        height: 400px;
+        z-index: 0;
+        overflow: hidden;
+        position: relative;
+    }
+    .index_head_uldiv{
+        width: 100%;
+        height: 400px;
+        position: relative;
+        z-index: 1;
+    }
+    .index_head_ul{
+        list-style: none;
+        z-index: 1;
+    }
+    .index_head_ul_inDiv{
+        width: 1230px;
+        height: 400px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .index_head_ul_imgDiv{
+        margin-left: 205px;
+        height: 400px;
+        position: absolute;
+    }
+    .index_head_ul_imgDiv img{
+        height: 400px;
+        width: 1023px;
+    }
+    .index_head_ul_inDiv:hover a{
+        display: block;
+        cursor: pointer;
+    }
+    .index_head_ollist_div{
+        z-index: 2;
+        left: 41%;
+        position: absolute;
+        height: 16px;
+        width: auto;
+        bottom: 15px;
+    }
+    .index_head_ol{
+        float: left;
+        position: relative;
+        z-index: 2;
+    }
+    .index_head_ol li{
+        display: inline-block;
+        background-color: #e2e2e2;
+        width: 12px;
+        height: 12px;
+        cursor: pointer;
+        padding: 0;
+        margin: 0 5px;
+        border-radius: 50px;
+    }
+    .index_head_ol li:hover{
+        background-color: #ff1842;
+    }
+    .index_head_left{
+        z-index: 3;
+        left: 18%;
+        top: 43%;
+        opacity: 0.6;
+        display: none;
+        position: absolute;
+    }
+    .index_head_right{
+        z-index: 3;
+        right: 20%;
+        top: 43%;
+        opacity: 0.6;
+        display: none;
+        position: absolute;
+    }
+    .index_head_lrp{
+        z-index: 3;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        color: #b1b1b1;
+        line-height: 40px;
+        border-radius: 50px;
+        background-color: #e5e5e5;
+    }
+    .index_head_top_div{
+        border: 2px solid #000000;
+        width: 100%;
+        z-index: 100;
+        position: absolute;
+    }
+    .index_head_top_divs{
+        width: 1230px;
+        height: auto;
+        margin: 0 auto;
+        position: relative;
+        border: 1px solid #ffc100;
+    }
+    .index_head_top_uldiv{
+        width: 205px;
+        height: 397px;
+        position: absolute;
+        background-color: #434343;
+    }
+    .index_head_top_ul{
+        list-style: none;
+    }
+    .index_head_top_ul li{
+        color: white;
+        font-size: 12px;
+        line-height: 36px;
+        -webkit-font-smoothing: none;
+    }
+    .index_head_top_ul li:hover{
+        background-color: #fdfdfd;
+        color: #424242;
+    }
+    .index_head_top_ul li:hover a{
+        color: #424242;
+    }
+    .index_head_top_ul li a{
+        color: white;
+        text-decoration: none;
+    }
+    .index_head_persion_div{
+        width: 205px;
+        height: 236px;
+        position: absolute;
+        right: 26px;
+        top: 80px;
+        background-image: url("../img/indexImgs/vip_bg2.png");
+        background-repeat: no-repeat;
+        background-color: white;
+    }
+    .index_persion_headimg_div{
+        width: 64px;
+        height: 64px;
+        position: absolute;
+        top: -25px;
+        left: 67px;
+    }
+    .index_persion_headimg_div img{
+        width: 64px;
+        height: 64px;
+        border-radius: 50px;
+        box-shadow: 0 0 0 5px rgba(220, 197, 220, 0.4);
+    }
+    .index_persion_center_div{
+        width: 205px;
+        height: 94px;
+        position: absolute;
+        top: 50px;
+    }
+    .index_persion_center_div p{
+        text-align: center;
+        font-size: 12px;
+        color: #919191;
+    }
+    .persion_a1{
+        width: 70px;
+        height: 25px;
+        border: 1px solid red;
+        color: red;
+        font-size: 12px;
+        border-radius: 30px;
+        text-align: center;
+        line-height: 25px;
+        position: absolute;
+        left:25px;
+        top: 50px;
+    }
+    .persion_a2{
+        width: 70px;
+        height: 25px;
+        border: 1px solid red;
+        color: red;
+        font-size: 12px;
+        border-radius: 30px;
+        text-align: center;
+        line-height: 25px;
+        position: absolute;
+        left: 110px;
+        top: 50px;
+    }
+    .index_persion_center_div a:hover{
+        background-color: #ce0000;
+        color: white;
+    }
+    .index_persion_ul_div{
+        width: 181px;
+        height: 72px;
+        position: absolute;
+        top:145px;
+        margin: 9px 12px;
+        overflow: hidden;
+    }
+    .index_persion_ul_div a{
+        font-size: 12px;
+        line-height: 23px;
+        color: #606060;
+    }
+    .index_persion_ul_div a:hover{
+        color: red;
+        cursor: pointer;
+    }
+    .index_persion_ul_div a em{
+        font-style: normal;
+    }
+
+
+
+    .index_main_div{
+        border: 1px solid #e60012;
+        margin: 0 auto;
+        width: 1200px;
+        height: auto;
+        overflow: hidden;
+    }
+</style>
+<!--最小宽度1230px-->
+<body>
+<?php include("content/tops.php") ?>
+
+<div class="index_head_div">
+    <div class="index_head_top_div">
+        <div class="index_head_top_divs">
+            <div class="index_head_top_uldiv">
+                <ul class="index_head_top_ul">
+                    <li><a href="#">全球进口</a></li>
+                    <li><a href="#">食品</a> / <a href="#">酒</a> / <a href="#">生鲜</a></li>
+                    <li><a href="#">母婴</a> / <a href="#">玩具</a> / <a href="#">童装</a></li>
+                    <li><a href="#">纸巾</a> / <a href="#">厨卫清洁</a></li>
+                    <li><a href="#">家居</a> / <a href="#">家装</a> / <a href="#">家纺</a> / <a href="#">宠物</a></li>
+                    <li><a href="#">美妆个人清洁</a></li>
+                    <li><a href="#">女装</a> / <a href="#">男装</a> / <a href="#">内衣</a> / <a href="#">珠宝</a></li>
+                    <li><a href="#">鞋靴</a> / <a href="#">箱包</a> / <a href="#">运动户外</a></li>
+                    <li><a href="#">家用电器</a> / <a href="#">汽车用品</a></li>
+                    <li><a href="#">医疗</a> / <a href="#">保健滋补</a> / <a href="#">成人</a></li>
+                    <li><a href="#">图书</a></li>
+                </ul>
+            </div>
+            <!--右边个人登录div-->
+            <div class="index_head_persion_div">
+                <!-- 用户登录顶部头像-->
+                <div class="index_persion_headimg_div">
+                    <a href="login.php"><img src="img/detailsImg/t9.jpg"/></a>
+                </div>
+                <!--中间部分-->
+                <div class="index_persion_center_div">
+                    <p>Hi~你好!</p>
+                    <a href="login.php" class="persion_a1">登录</a>
+                    <a href="register.php" class="persion_a2">注册</a>
+                </div>
+                <div class="index_persion_ul_div">
+                    <a href="#" title="优选"><em style="color: red">【优选】</em><span>冬日火锅计划，燥起来！</span></a>
+                    <a href="#" title="优选"><em>【优选】</em><span>全球购物之旅-美国站</span></a>
+                    <a href="#" title="优选"><em>【优选】</em><span>提升厨房逼格的好货专辑</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="index_head_uldiv">
+        <ul class="index_head_ul">
+            <li style="display: none;background-color: rgb(237, 32, 75); position: absolute; z-index: 0;width: 100%">
+                <!--最小宽度1230px-->
+                <div class="index_head_ul_inDiv">
+                    <a href="#" title="美妆返场"><div class="index_head_ul_imgDiv">
+                            <img src="img/indexImgs/tou1.jpg"/>
+                        </div></a>
+                    <a href="#" class="index_head_left"><p class="index_head_lrp"> < </p></a>
+                    <a href="#" class="index_head_right"><p class="index_head_lrp"> > </p></a>
+                </div>
+            </li>
+            <li style="display: none;background-color: #24e686; position: absolute; z-index: 0;width: 100%">
+                <!--最小宽度1230px-->
+                <div class="index_head_ul_inDiv">
+                    <a href="#" title="生鲜"><div class="index_head_ul_imgDiv">
+                            <img src="img/indexImgs/tou2.jpg"/>
+                        </div></a>
+                    <a href="#" class="index_head_left"><p class="index_head_lrp"> < </p></a>
+                    <a href="#" class="index_head_right"><p class="index_head_lrp"> > </p></a>
+                </div>
+            </li>
+            <li style="display: block;background-color: #4fa9ff; position: absolute; z-index: 0;width: 100%">
+                <!--最小宽度1230px-->
+                <div class="index_head_ul_inDiv">
+                    <a href="#" title="厨卫清洁特惠"><div class="index_head_ul_imgDiv">
+                            <img src="img/indexImgs/tou3.jpg"/>
+                        </div></a>
+                    <a href="#" class="index_head_left"><p class="index_head_lrp"> < </p></a>
+                    <a href="#" class="index_head_right"><p class="index_head_lrp"> > </p></a>
+                </div>
+            </li>
+            <li style="display: none;background-color: #00b4ff; position: absolute; z-index: 0;width: 100%">
+                <!--最小宽度1230px-->
+                <div class="index_head_ul_inDiv">
+                    <a href="#" title="进口"><div class="index_head_ul_imgDiv">
+                            <img src="img/indexImgs/tou4.jpg"/>
+                        </div></a>
+                    <a href="#" class="index_head_left"><p class="index_head_lrp"> < </p></a>
+                    <a href="#" class="index_head_right"><p class="index_head_lrp"> > </p></a>
+                </div>
+            </li>
+            <li style="display: none;background-color: #ef437b; position: absolute; z-index: 0;width: 100%">
+                <!--最小宽度1230px-->
+                <div class="index_head_ul_inDiv">
+                    <a href="#" title="护肤达人"><div class="index_head_ul_imgDiv">
+                            <img src="img/indexImgs/tou5.jpg"/>
+                        </div></a>
+                    <a href="#" class="index_head_left"><p class="index_head_lrp"> < </p></a>
+                    <a href="#" class="index_head_right"><p class="index_head_lrp"> > </p></a>
+                </div>
+            </li>
+            <li style="display: none;background-color: #651eac; position: absolute; z-index: 0;width: 100%">
+                <!--最小宽度1230px-->
+                <div class="index_head_ul_inDiv">
+                    <a href="#" title="潮流服饰"><div class="index_head_ul_imgDiv">
+                            <img src="img/indexImgs/tou6.jpg"/>
+                        </div></a>
+                    <a href="#" class="index_head_left"><p class="index_head_lrp"> < </p></a>
+                    <a href="#" class="index_head_right"><p class="index_head_lrp"> > </p></a>
+                </div>
+            </li>
+            <li style="display: none;background-color: #3432b9; position: absolute; z-index: 0;width: 100%">
+                <!--最小宽度1230px-->
+                <div class="index_head_ul_inDiv">
+                    <a href="#" title="手机返场"><div class="index_head_ul_imgDiv">
+                            <img src="img/indexImgs/tou7.jpg"/>
+                        </div></a>
+                    <a href="#" class="index_head_left"><p class="index_head_lrp"> < </p></a>
+                    <a href="#" class="index_head_right"><p class="index_head_lrp"> > </p></a>
+                </div>
+            </li>
+            <li style="display: none;background-color: #75009f; position: absolute; z-index: 0;width: 100%">
+                <!--最小宽度1230px-->
+                <div class="index_head_ul_inDiv">
+                    <a href="#" title="美酒"><div class="index_head_ul_imgDiv">
+                            <img src="img/indexImgs/tou8.jpg"/>
+                        </div></a>
+                    <a href="#" class="index_head_left"><p class="index_head_lrp"> < </p></a>
+                    <a href="#" class="index_head_right"><p class="index_head_lrp"> > </p></a>
+                </div>
+            </li>
+            <li style="display: none;background-color: #0267ff; position: absolute; z-index: 0;width: 100%">
+                <!--最小宽度1230px-->
+                <div class="index_head_ul_inDiv">
+                    <a href="#" title="智能数码感恩会场"><div class="index_head_ul_imgDiv">
+                            <img src="img/indexImgs/tou9.jpg"/>
+                        </div></a>
+                    <a href="#" class="index_head_left"><p class="index_head_lrp"> < </p></a>
+                    <a href="#" class="index_head_right"><p class="index_head_lrp"> > </p></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div  class="index_head_ollist_div">
+        <ol class="index_head_ol">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+
+</div>
+
+<div class="index_main_div">
+    主div
+</div>
+
+<?php include("content/bottoms.php") ?>
+</body>
+</html>
